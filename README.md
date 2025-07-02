@@ -2,6 +2,8 @@
 Ditto is cloud computing company which does sync w/o internet. They prioritize peer to peer networking rather than having and pulling from a cloud base.
 
 ## TODO
+
+### Ditto Custom CRM
 I had to build a CUSTOM CRM for Ditto + Andriod App.
 The Custom CRM (customer relationship management) tool was build using the MAMP (Mac, Apache, MySQL, PHP—a pre-packaged local server environment for macOS (though there’s also MAMP Pro for advanced users and Windows versions). It’s like a "one-click" way to run a PHP/MySQL server on your computer without complex setup.)
 and LAMP (Linux, Apache, MySQL, PHP) Architecture.
@@ -31,3 +33,7 @@ MAMP bundles Apache so you don’t have to install/config it manually.
 3. When editing the MySQL DB, go to the database folder, open the `install` SQL Text File, edit the content, copy/paste it into Query 1 after opening the MySQL Workbench Connections, select ALL & hit ⚡
 4. 
    ![image](https://github.com/user-attachments/assets/f83fcf1e-ce67-4f54-92ca-e060e1b2073c)
+
+### Andriod App
+
+I first played around with the [Inventory demo app](https://github.com/getditto/demoapp-inventory) from Ditto
