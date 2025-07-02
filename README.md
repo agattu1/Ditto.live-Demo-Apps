@@ -204,8 +204,8 @@ If I could euphoria a new model for the inventory api for scaling when we have t
 Access pattern which you might see:
 
 When the front end service wants to get all of the restaurants nearby with their food inventory to show it to the user, we are going to make it call the list resturants api & return all the resturants we have 
-This could break tho x....x What if we have 10 GB data of resturants in the DB?
 
+This could break tho x....x What if we have 10 GB data of resturants in the DB?
 Aws Lambda caps out at 6 MB ... if more resturants it will break
 
 `Solution` : Pagination
