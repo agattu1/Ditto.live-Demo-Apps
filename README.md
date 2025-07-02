@@ -197,6 +197,20 @@ Here is a **systematic and chronological breakdown** of the key changes made to 
 
 ---
 
-Would you like me to zip the final working source files for backup or handoff?
+## Future work...
+
+If I could euphoria a new model for the inventory api for scaling when we have tons of food inventory added into stock and nearby locations which offer that inventory food item specifically. 
+
+Access pattern which you might see:
+
+When the front end service wants to get all of the restaurants nearby with their food inventory to show it to the user, we are going to make it call the list resturants api & return all the resturants we have 
+This could break tho x....x What if we have 10 GB data of resturants in the DB?
+
+Aws Lambda caps out at 6 MB ... if more resturants it will break
+
+`Solution` : Pagination
+
+When the front end wants restaurants, We're just gonna return their list up the 10 nearest restaurants plus a token they can use to make a second API call to get the 10 restaurants after that.
+Users wont care as they may only want to look at the inventory in the 10 nearest resturants anyway... (Its like 2nd pg of Google)
 
 
