@@ -21,3 +21,5 @@ When you visit a .php file (e.g., index.php), here’s what happens:
 4. Apache sends back the final HTML to your browser.
 
 > Without Apache (or an alternative like Nginx), PHP files wouldn’t execute—they’d just download as text!
+But the thing is, Nginx is more efficeint for high traffic apps. Using Node.js/Python/Ruby → They have their own servers (Express, Django, Rails)
+
