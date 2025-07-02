@@ -36,4 +36,9 @@ MAMP bundles Apache so you don’t have to install/config it manually.
 
 ### Andriod App
 
-I first played around with the [Inventory demo app](https://github.com/getditto/demoapp-inventory) from Ditto
+I first played around with the [Inventory demo app](https://github.com/getditto/demoapp-inventory) from Ditto which showed me Ditto real-time sync via peer to peer devices in the mesh of food inventory counter. I had to initalize my App ID and Auth URL from the Ditto Portal to connect via SDK (I called it [outreachable](https://portal.ditto.live/app/outreachable/connect)).
+![image](https://github.com/user-attachments/assets/122d50b4-af2e-4e79-b22e-cf7ddd022ec3)
+
+
+
+
