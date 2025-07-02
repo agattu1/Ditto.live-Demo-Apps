@@ -23,3 +23,6 @@ When you visit a .php file (e.g., index.php), here’s what happens:
 > Without Apache (or an alternative like Nginx), PHP files wouldn’t execute—they’d just download as text!
 But the thing is, Nginx is more efficeint for high traffic apps. Using Node.js/Python/Ruby → They have their own servers (Express, Django, Rails)
 
+Apache is the "bridge" between your browser and PHP/MySQL.
+MAMP bundles Apache so you don’t have to install/config it manually.
+
