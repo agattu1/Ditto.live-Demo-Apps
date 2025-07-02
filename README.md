@@ -39,6 +39,9 @@ MAMP bundles Apache so you don’t have to install/config it manually.
 I first played around with the [Inventory demo app](https://github.com/getditto/demoapp-inventory) from Ditto which showed me Ditto real-time sync via peer to peer devices in the mesh of food inventory counter. I had to initalize my App ID and Auth URL from the Ditto Portal to connect via SDK (I called it [outreachable](https://portal.ditto.live/app/outreachable/connect)).
 ![image](https://github.com/user-attachments/assets/122d50b4-af2e-4e79-b22e-cf7ddd022ec3)
 
+I listed there creds in the `secure/debug_creds.properties` file so Android looks at that .env file. When gradle restores packages, it should auto load in the information from the .env file to the BuildConfig. DittoManager then reads these values and uses them to connect to Ditto.
+
+For more information, see the [build.gradle](https://github.com/getditto/demoapp-inventory/blob/main/Android/app/build.gradle#L20) file.
 
 
 
