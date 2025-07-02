@@ -166,6 +166,7 @@ Create a store observer by calling DittoStore.registerObserver. The store observ
 
 ---
 
+
 ## Summary of Core Fixes
 
 | Area               | Fix/Change                                                             |
@@ -178,6 +179,82 @@ Create a store observer by calling DittoStore.registerObserver. The store observ
 | **Removed Errors** | Eliminated usage of `findByID` and `DittoObserver` which don’t exist.  |
 
 ---
+
+## 📦 “Total Price” Feature Overview
+
+Running total (and its green→yellow→red color ramp) was added to the Inventory demo.
+
+---
+
+### 1. UI: Add a Total-TextView
+
+In **`res/layout/activity_main.xml`**, insert a `TextView` (e.g. at the bottom) to display the total:
+
+
+### 2. Reference the View in `MainActivity`
+
+In **`MainActivity.kt`**:
+
+```kotlin
+class MainActivity : AppCompatActivity(), DittoManager.ItemUpdateListener {
+    private lateinit var totalTextView: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) { ...
+    }
+```
+
+### 3. Implement `updateTotalPrice()`
+
+Add a helper that:
+
+1. **Calculates** the sum of `(count × price)` for all items
+2. **Formats** it as currency
+3. **Chooses** a text color based on thresholds
+
+```kotlin
+private fun updateTotalPrice() {
+    // 1) Compute total
+    // 2) Display as currency
+    // 3) Color-code
+}
+```
+
+### 4. Hook into Ditto Callbacks
+
+Invoke `updateTotalPrice()` whenever inventory counts are first loaded or updated:
+
+```kotlin
+// Called once on initial load:
+override fun setInitial(items: List<ItemModel>) {
+    runOnUiThread {
+        itemsAdapter.setInitial(items)
+        updateTotalPrice()   // ← **update here**
+    }
+}
+
+// Called on every increment/decrement:
+override fun updateCount(index: Int, count: Int) {
+    runOnUiThread {
+        itemsAdapter.updateCount(index, count)
+        animateGlow(index)
+        updateTotalPrice()   //** ← and here**
+    }
+}
+```
+
+---
+
+## 🎉 Result
+
+* **Real-time total** of your inventory is always visible.
+* **Color changes** dynamically:
+
+  * **Green** when total ≤ 55
+  * **Yellow** when 55 < total ≤ 80
+  * **Red** when total > 80
+
+This straightforward pattern—UI element → helper function → hook into data callbacks— used
+
 
 ## Future work...
 
