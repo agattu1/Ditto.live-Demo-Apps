@@ -123,6 +123,12 @@ Here is a **systematic and chronological breakdown** of the key changes made to 
     ```
   * **Returns:** `DittoStoreObserver` instead of `CombinedLiveQuery`.
   * **Handles Result Conversion:** Converts each result to a `DittoDocument` using `_id` lookup and maps to corresponding `ItemModel`.
+ 
+  * **COLLECTIONS**
+  * Ditto stores data records as documents (JSON-like) which are gathered together in collections.
+  *  An application stores one or more collection of documents ( All DOCS are in Collections)  Internally these documents are CRDTs, which are a binary representation of JSON doc
+  *  Query Collections : DATABASE INTERACTIONS OCCUR W/ COLLECTIONS NOT DOCS!
+
 
 * ✅ **Logging:** Added logs for debugging Ditto startup, data loading, and search events.
 
