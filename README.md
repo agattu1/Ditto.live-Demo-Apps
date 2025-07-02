@@ -179,7 +179,7 @@ Here is a **systematic and chronological breakdown** of the key changes made to 
 
 ### ✅ 3. **Created `SearchActivity.kt`**
 
-**File:** [`SearchActivity.kt` view code here](#)
+**File:** `SearchActivity.kt`
 
 * **Functionality:**
 
@@ -195,7 +195,7 @@ Here is a **systematic and chronological breakdown** of the key changes made to 
 
 ### ✅ 4. **Created `SearchAdapter.kt`**
 
-**File:** [`SearchAdapter.kt` view code here](#)
+**File:** `SearchAdapter.kt`
 
 * **Purpose:**
 
