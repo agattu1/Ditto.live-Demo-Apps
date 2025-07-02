@@ -1,5 +1,5 @@
 # Ditto.live-Demo-Apps
-Ditto is cloud computing company which does sync w/o internet. They prioritize peer to peer networking rather than having and pulling from a cloud base. I had to build a CUSTOM CRM for Ditto + Andriod App
+Ditto is cloud computing company which does sync w/o internet. They prioritize peer to peer networking rather than having and pulling from a cloud base. I built out a CUSTOM CRM for Ditto + Andriod App Search Toggle Feature (including a total price point with color adjustment)
 
 ## CUSTOM CRM
 ![image](https://github.com/user-attachments/assets/2710dd13-6bd1-4c49-8661-5e04c4f8d2f7) 
