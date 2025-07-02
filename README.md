@@ -28,6 +28,6 @@ MAMP bundles Apache so you don’t have to install/config it manually.
 
 1. Once MySQL & MAMP is downloaded add the `CRM-System-WebApp-master` AND `index.php` files into **htdocs** folder
 2. Configure MAMP & MySQL
-3. When editing the MySQL DB, go to the database folder, open the `install` SQL Text File, edit the content, copy/paste it into the Query 1 , select ALL & hit ⚡
+3. When editing the MySQL DB, go to the database folder, open the `install` SQL Text File, edit the content, copy/paste it into Query 1 after opening the MySQL Workbench Connections, select ALL & hit ⚡
 4. 
    ![image](https://github.com/user-attachments/assets/f83fcf1e-ce67-4f54-92ca-e060e1b2073c)
