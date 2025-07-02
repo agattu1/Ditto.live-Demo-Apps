@@ -39,9 +39,164 @@ MAMP bundles Apache so you don’t have to install/config it manually.
 I first played around with the [Inventory demo app](https://github.com/getditto/demoapp-inventory) from Ditto which showed me Ditto real-time sync via peer to peer devices in the mesh of food inventory counter. I had to initalize my App ID and Auth URL from the Ditto Portal to connect via SDK (I called it [outreachable](https://portal.ditto.live/app/outreachable/connect)).
 ![image](https://github.com/user-attachments/assets/122d50b4-af2e-4e79-b22e-cf7ddd022ec3)
 
-I listed there creds in the `secure/debug_creds.properties` file so Android looks at that .env file. When gradle restores packages, it should auto load in the information from the .env file to the BuildConfig. DittoManager then reads these values and uses them to connect to Ditto.
+I listed the creds in the `secure/debug_creds.properties` file so Android looks at that .env file. When gradle restores packages, it should auto load in the information from the .env file to the BuildConfig. DittoManager then reads these values and uses them to connect to Ditto.
 
 For more information, see the [build.gradle](https://github.com/getditto/demoapp-inventory/blob/main/Android/app/build.gradle#L20) file.
 
+Here is a systematic and chronological breakdown of the key changes made to enable working search functionality in the Ditto Inventory demo app:
+
+Here is a **systematic and chronological breakdown** of the key changes made to enable working search functionality in the Ditto Inventory demo app:
+
+---
+
+### ✅ 1. **Manifest Configuration**
+
+**File:** `AndroidManifest.xml`
+
+* **Added** the `SearchActivity`:
+
+  ```xml
+  <activity android:name="live.ditto.inventory.SearchActivity"/>
+  ```
+* **Ensured Permissions**:
+
+  * Bluetooth, location, internet, and network-related permissions were declared, which are needed for Ditto syncing.
+
+---
+
+### ✅ 2. **UI Layout for Search**
+
+**File:** `item_search_result.xml` (name inferred from adapter)
+
+* **Defined** the layout of each search result item, including:
+
+  * `ImageView` for product image.
+  * `TextView` for title, detail, and count.
+  * Used `ConstraintLayout` for responsiveness.
+
+---
+
+### ✅ 3. **Created `SearchActivity.kt`**
+
+**File:** [`SearchActivity.kt` view code here](#)
+
+* **Functionality:**
+
+  * Initializes RecyclerView and adapter (`SearchAdapter`).
+  * Adds a debounced `TextWatcher` to input field.
+  * On every text change:
+
+    * Closes previous `DittoStoreObserver`.
+    * Initiates a new observer via `DittoManager.observeSearchResults()`.
+  * Converts matched documents to `ItemModel` and submits to adapter.
+
+---
+
+### ✅ 4. **Created `SearchAdapter.kt`**
+
+**File:** [`SearchAdapter.kt` view code here](#)
+
+* **Purpose:**
+
+  * Displays search result items using a custom layout.
+  * Supports click listener (optional).
+  * Efficient updates using `DiffUtil`.
+
+---
+
+### ✅ 5. **Major Overhaul in `DittoManager.kt`**
+
+**File:** `DittoManager.kt`
+
+* ✅ **Refactored `observeSearchResults()`**:
+
+  * **Old issue:** You initially used `".contains($0)"`, which caused runtime `ParseError`.
+  * **Fix:** Changed to proper DQL `LIKE` usage:
+
+    ```kotlin
+    val query = """
+        SELECT * 
+        FROM inventories 
+        WHERE title LIKE :query OR detail LIKE :query
+    """
+    val params = mapOf("query" to "%$queryText%")
+    ```
+  * **Returns:** `DittoStoreObserver` instead of `CombinedLiveQuery`.
+  * **Handles Result Conversion:** Converts each result to a `DittoDocument` using `_id` lookup and maps to corresponding `ItemModel`.
+
+* ✅ **Logging:** Added logs for debugging Ditto startup, data loading, and search events.
+
+* ✅ **Improved Defensive Checks:** Early return if Ditto is uninitialized.
+
+* ✅ **Removed Invalid References:**
+
+  * Removed incorrect usage of `DittoObserver` and `findByID` which do not exist in Ditto SDK.
+
+---
+
+### ✅ 6. **Hooked Search Button in MainActivity**
+
+**File:** `MainActivity.kt`
+
+* **Method Added**:
+
+  ```kotlin
+  fun openSearchScreen(view: View) {
+      startActivity(Intent(this, SearchActivity::class.java))
+  }
+  ```
+* **Ensure Button in Layout**:
+
+  * Search icon or button in XML must be set to `onClick="openSearchScreen"`.
+
+---
+
+### ✅ 7. **Visual Enhancements**
+
+* ✳️ **UI Detail Improvements** in `itemsForView`:
+
+  * Emojis and polished descriptions (e.g., `"Cold can of Coke 🧊"`).
+* ✳️ **Live Count Sync:** Updates UI with real-time count changes.
+
+---
+
+### ✅ 8. **Live Filtering Logic**
+
+* **In Adapter:**
+
+  * Filters results based on `_id` and dynamically updates counts.
+* **Thread-Safe Execution:**
+
+  * UI updates use `runOnUiThread`.
+
+---
+
+### ✅ 9. **Closing Observers**
+
+* **In `onDestroy()` of `SearchActivity`:**
+
+  ```kotlin
+  override fun onDestroy() {
+      searchObserver?.close()
+      super.onDestroy()
+  }
+  ```
+
+---
+
+## Summary of Core Fixes
+
+| Area               | Fix/Change                                                             |
+| ------------------ | ---------------------------------------------------------------------- |
+| **Crash Fix**      | Corrected Ditto query syntax from `.contains()` to `LIKE :query`.      |
+| **Observer API**   | Switched from invalid observer types to `DittoStoreObserver`.          |
+| **UI/UX**          | Added debounce, consistent UI updates, and real-time sync integration. |
+| **Manifest**       | Registered `SearchActivity` and ensured necessary permissions.         |
+| **Debugging Logs** | Added logs for startup, sync, and search result tracing.               |
+| **Removed Errors** | Eliminated usage of `findByID` and `DittoObserver` which don’t exist.  |
+
+---
+
+Would you like me to zip the final working source files for backup or handoff?
 
 
