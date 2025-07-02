@@ -34,6 +34,107 @@ MAMP bundles Apache so you don’t have to install/config it manually.
 4. 
    ![image](https://github.com/user-attachments/assets/f83fcf1e-ce67-4f54-92ca-e060e1b2073c)
 
+
+### **Key Characteristics of Your Custom CRM**
+Based on your code and database structure, your CRM appears to be designed better than off the shelf CRM b/c it is tailored software solution designed specifically to manage Ditto organization's interactions w current & potential customers!
+
+1. **Sales Pipeline Management**
+   - Tracks leads, opportunities, and won customers
+   - Manures tasks and notes for sales reps
+   - 
+2. **Contact Management**
+   - Stores detailed contact info (names, emails, companies)
+   - Tracks communication history (notes table)
+   - Manures referral sources and background info
+
+3. **User Roles & Permissions**
+   - Distinguishes between sales reps, managers, and admins
+   - Controls access to features (e.g., only managers see "Customers/Won")
+
+
+Not fully synced with the ditto.live experience just yet but I was planning to knock that out b4 I came across doing DemoApp
+
+Small Peer setup is completed (embedded local-first database w/o the Ditto SDK)
+No JSON DB , I provide a SYSTEMATIC Schema upfront w MySQL!
+
+custom CRM allows:
+
+Searching Pillsbury → Finds Linda DeCastro
+
+Viewing her record → Shows project details
+
+Checking linked notes → Reveals call history!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
 ### Andriod App
 
 I first played around with the [Inventory demo app](https://github.com/getditto/demoapp-inventory) from Ditto which showed me Ditto real-time sync via peer to peer devices in the mesh of food inventory counter. I had to initalize my App ID and Auth URL from the Ditto Portal to connect via SDK (I called it [outreachable](https://portal.ditto.live/app/outreachable/connect)).
