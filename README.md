@@ -131,6 +131,16 @@ Here is a **systematic and chronological breakdown** of the key changes made to 
 * ✅ **Removed Invalid References:**
 
   * Removed incorrect usage of `DittoObserver` and `findByID` which do not exist in Ditto SDK.
+ 
+  * public final class DittoStore
+Provides access to execute Ditto queries, work with DittoCollections and a write transaction API
+
+-> 
+public final class DittoStoreObserver
+    : Closeable
+A store observer invokes an observation handler whenever results for its query change.
+Create a store observer by calling DittoStore.registerObserver. The store observer will remain active until the owning Ditto instance goes out of scope or the DittoStoreObserver.close is called
+
 
 ---
 
