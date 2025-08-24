@@ -13,3 +13,16 @@ http://localhost:8888/CRM-System-WebApp-master/index.php
 ## ANDRIOD STUDIO
 
 ![image](https://github.com/user-attachments/assets/6a498747-eeaa-4cc1-9f36-4efc2f2822de)
+
+
+# References
+
+[] https://docs.ditto.live/key-concepts/accessing-data
+[] https://software.ditto.live/js/Ditto/4.11.0/api-reference/classes/Collection.html
+[] https://portal.ditto.live/app/outreachable/connect
+[] https://docs.ditto.live/home/about-ditto
+[] [1.1 Intro to Ditto: The Big and Small Peer]([url](https://youtu.be/u3y2NpA5R0A?si=qGwl6coXahAzdWh-))
+[] [Introducing Ditto SDK 4.10]([url](https://youtu.be/UarebbuwZBE?si=-1xejdxt_LkBLe-V))
+[] [Ditto Inventory]([url](https://youtu.be/1P2bKEJjdec?si=vVMHXRvstA5Eqwj_))
+[] [Ditto VPN with Apple Tap to Pay Demonstration]([url](https://youtu.be/LPqvvNjKFmc?si=rOM-lJSfa5dOcGj3))
+[] 
